@@ -1,46 +1,154 @@
 // import logo from './logo.svg';
 import './App.css';
-import BarChart from './components/BarChart';
+// import BarChart from './components/BarChart';
+import TreeMap from './components/TreeMap';
+// import useFetch from './hooks/useFetch';
 
-const data = [
-  { year: 1980, efficiency: 24.3, sales: 8949000 },
-  { year: 1985, efficiency: 27.6, sales: 10979000 },
-  { year: 1990, efficiency: 28, sales: 9303000 },
-  { year: 1991, efficiency: 28.4, sales: 8185000 },
-  { year: 1992, efficiency: 27.9, sales: 8213000 },
-  { year: 1993, efficiency: 28.4, sales: 8518000 },
-  { year: 1994, efficiency: 28.3, sales: 8991000 },
-  { year: 1995, efficiency: 28.6, sales: 8620000 },
-  { year: 1996, efficiency: 28.5, sales: 8479000 },
-  { year: 1997, efficiency: 28.7, sales: 8217000 },
-  { year: 1998, efficiency: 28.8, sales: 8085000 },
-  { year: 1999, efficiency: 28.3, sales: 8638000 },
-  { year: 2000, efficiency: 28.5, sales: 8778000 },
-  { year: 2001, efficiency: 28.8, sales: 8352000 },
-  { year: 2002, efficiency: 29, sales: 8042000 },
-  { year: 2003, efficiency: 29.5, sales: 7556000 },
-  { year: 2004, efficiency: 29.5, sales: 7483000 },
-  { year: 2005, efficiency: 30.3, sales: 7660000 },
-  { year: 2006, efficiency: 30.1, sales: 7762000 },
-  { year: 2007, efficiency: 31.2, sales: 7562000 },
-  { year: 2008, efficiency: 31.5, sales: 6769000 },
-  { year: 2009, efficiency: 32.9, sales: 5402000 },
-  { year: 2010, efficiency: 33.9, sales: 5636000 },
-  { year: 2011, efficiency: 33.1, sales: 6093000 },
-  { year: 2012, efficiency: 35.3, sales: 7245000 },
-  { year: 2013, efficiency: 36.4, sales: 7586000 },
-  { year: 2014, efficiency: 36.5, sales: 7708000 },
-  { year: 2015, efficiency: 37.2, sales: 7517000 },
-  { year: 2016, efficiency: 37.7, sales: 6873000 },
-  { year: 2017, efficiency: 39.4, sales: 6081000 },
-]
+const tempData = {
+  name: 'Stock Data',
+  "children": [
+    {
+      name: 'communication',
+      children: [
+        {
+          'ticker': 'twtr',
+          name: 'twtr',
+          'close_price': '55',
+          value: 55,
+          move: 'gain',
+          'p/e': '2.2',
+          'eps': '5',
+          '52_week_high': '70',
+          '52_week_low': '30',
+          'perf_over_year': '35%',
+          'mar_cap': '440',
+          'date': '10262021',
+          'load_date': '10262021',
+          'industry': 'communication'
+        },
+        {
+          'ticker': 'goog',
+          name: 'goog',
+          'close_price': '2700',
+          value: 2700,
+          move: 'gain',
+          'p/e': '1.1',
+          'eps': '3',
+          '52_week_high': '2900',
+          '52_week_low': '1700',
+          'perf_over_year': '30%',
+          'mar_cap': '990',
+          'date': '10262021',
+          'load_date': '10262021',
+          'industry': 'communication'
+        },
+        {
+          'ticker': 'fb',
+          name: 'fb',
+          'close_price': '312',
+          value: 312,
+          move: 'gain',
+          'p/e': '1.5',
+          'eps': '3',
+          '52_week_high': '290',
+          '52_week_low': '370',
+          'perf_over_year': '15%',
+          'mar_cap': '950',
+          'date': '10262021',
+          'load_date': '10262021',
+          'industry': 'communication'
+        },
+      ]
+    }, {
+      name: 'technology',
+      children: [
+        {
+          'ticker': 'msft',
+          name: 'msft',
+          'close_price': '330',
+          value: 330,
+          move: 'gain',
+          'p/e': '0.98',
+          'eps': '4',
+          '52_week_high': '312',
+          '52_week_low': '200',
+          'perf_over_year': '40%',
+          'mar_cap': '1100',
+          'date': '10262021',
+          'load_date': '10262021',
+          'industry': 'technology'
+        },
+        {
+          'ticker': 'amzn',
+          name: 'amzn',
+          'close_price': '3200',
+          value: 3200,
+          move: 'gain',
+          'p/e': '1.98',
+          'eps': '4',
+          '52_week_high': '3700',
+          '52_week_low': '3100',
+          'perf_over_year': '15%',
+          'mar_cap': '940',
+          'date': '10262021',
+          'load_date': '10262021',
+          'industry': 'technology'
+        },
+        {
+          'ticker': 'APPL',
+          name: 'APPL',
+          'close_price': '150',
+          value: 150,
+          move: 'loss',
+          'p/e': '1.32',
+          'eps': '8',
+          '52_week_high': '164',
+          '52_week_low': '132',
+          'perf_over_year': '10%',
+          'mar_cap': '1041',
+          'date': '10262021',
+          'load_date': '10262021',
+          'industry': 'technology'
+        }
+      ]
+    },
+    {
+      name: 'Car',
+      children: [
+        {
+          'ticker': 'GM',
+          name: 'GM',
+          'close_price': '1500',
+          value: 1500,
+          move: 'loss',
+          'p/e': '1.32',
+          'eps': '8',
+          '52_week_high': '164',
+          '52_week_low': '132',
+          'perf_over_year': '10%',
+          'mar_cap': '1041',
+          'date': '10262021',
+          'load_date': '10262021',
+          'industry': 'Car'
+        }
+      ]
+    }
+  ]
+}
+
 
 function App() {
+  // const { data } = useFetch('https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_dendrogram_full.json')
+
+  const data = tempData;
+  console.log(data);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <BarChart data={data} />
-      </header>
+      {/* <header className="App-header">
+          <BarChart data={data} />
+        </header> */}
+      <TreeMap data={data} height="800" width="800" />
     </div>
   );
 }
