@@ -1,9 +1,11 @@
 import { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
+import { useNavigate } from "react-router-dom";
 
 export default function TreeMap({ data, width, height }) {
   const svgRef = useRef(null);
-  const legendRef = useRef(null);
+  const navigate = useNavigate();
+  // const legendRef = useRef(null);
 
   function renderTreemap() {
     const svg = d3.select(svgRef.current);
@@ -33,15 +35,21 @@ export default function TreeMap({ data, width, height }) {
     // create color scheme and fader
 
     const colorScale = d3.scaleOrdinal()
-    .domain(["gain", "loss"])
-    .range([ "#009900", "#CC0000"])
+      .domain(["gain", "loss"])
+      .range(["#009900", "#CC0000"]);
 
     // add treemap rects
     nodes
       .append('rect')
       .attr('width', (d) => d.x1 - d.x0)
       .attr('height', (d) => d.y1 - d.y0)
-      .attr('fill', (d) => colorScale(d.data.move));
+      .attr('fill', (d) => colorScale(d.data.move))
+      .attr('class', (d) => d.data.name)
+      .on("click", function () {
+        const stockName = this.className.baseVal;
+        console.log(stockName)
+        navigate(`/stock/${stockName}`);
+      });
 
     const fontSize = 12;
 
@@ -145,7 +153,7 @@ export default function TreeMap({ data, width, height }) {
   return (
     <div>
       <svg ref={svgRef} />
-      <svg ref={legendRef} />
+      {/* <svg ref={legendRef} /> */}
     </div>
   );
 }

@@ -1,8 +1,14 @@
-// import logo from './logo.svg';
 import './App.css';
-// import BarChart from './components/BarChart';
 import TreeMap from './components/TreeMap';
-// import useFetch from './hooks/useFetch';
+import GraphChart from './components/GraphChart';
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link
+} from "react-router-dom";
+
 
 const tempData = {
   name: 'Stock Data',
@@ -59,7 +65,8 @@ const tempData = {
           'industry': 'communication'
         },
       ]
-    }, {
+    },
+    {
       name: 'technology',
       children: [
         {
@@ -141,15 +148,33 @@ function App() {
   // const { data } = useFetch('https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_dendrogram_full.json')
 
   const data = tempData;
-  console.log(data);
+  // console.log(data);
 
   return (
-    <div className="App">
-      {/* <header className="App-header">
-          <BarChart data={data} />
-        </header> */}
-      <TreeMap data={data} height="800" width="800" />
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={
+            <div className="App">
+              <TreeMap data={data} height="800" width="800" />
+            </div>
+          }>
+          </Route>
+          <Route path="/stock/:id" element={
+            <GraphChart data={data} />
+          }>
+          </Route>
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
