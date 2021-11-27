@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
 import { useNavigate } from "react-router-dom";
 
-export default function TreeMap({ data, width, height }) {
+export default function TreeMap({ data, keyValue, width, height }) {
   const svgRef = useRef(null);
   const navigate = useNavigate();
   // const legendRef = useRef(null);
@@ -19,8 +19,8 @@ export default function TreeMap({ data, width, height }) {
     // create root node
     const root = d3
       .hierarchy(data)
-      .sum((d) => d.value)
-      .sort((a, b) => b.value - a.value);
+      .sum((d) => d[keyValue])
+      .sort((a, b) => b[keyValue] - a[keyValue]);
 
     // create treemap layout
     const treemapRoot = d3.treemap().size([width, height]).padding(1)(root);
@@ -67,10 +67,11 @@ export default function TreeMap({ data, width, height }) {
 
     nodes
       .append('text')
-      .text((d) => `${d.data.value.toLocaleString('en-US', {
-        style: 'currency',
-        currency: 'USD',
-      })}`)
+      // .text((d) => `${d.data[keyValue].toLocaleString('en-US', {
+      //   style: 'currency',
+      //   currency: 'USD',
+      // })}`)
+      .text((d) => `${d.data[keyValue]}`)
       .attr('data-width', (d) => d.x1 - d.x0)
       .attr('font-size', `${fontSize}px`)
       .attr('x', (d) => (d.x1 - d.x0) / 2)
@@ -148,7 +149,7 @@ export default function TreeMap({ data, width, height }) {
 
   useEffect(() => {
     renderTreemap();
-  }, [data]);
+  }, [data, keyValue]);
 
   return (
     <div>

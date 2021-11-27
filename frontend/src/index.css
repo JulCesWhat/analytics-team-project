@@ -11,3 +11,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App {
+  display: flex;
+  justify-content: center;
+}
+
+.select-container {
+  text-align: left;
+  margin-top: 150px;
+  margin-right: 20px;
+}
+
+.ui-select {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.ui-select label {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header H1 {
+  margin-left: 10px;
+}
