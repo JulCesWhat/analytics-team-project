@@ -10,6 +10,7 @@ export default function TreeMap({ data, keyValue, width, height }) {
   function renderTreemap() {
     const svg = d3.select(svgRef.current);
     svg.selectAll('g').remove();
+    svg.selectAll('text').remove()
 
     // const legendContainer = d3.select(legendRef.current);
     // legendContainer.selectAll('g').remove();
@@ -23,7 +24,10 @@ export default function TreeMap({ data, keyValue, width, height }) {
       .sort((a, b) => b[keyValue] - a[keyValue]);
 
     // create treemap layout
-    const treemapRoot = d3.treemap().size([width, height]).padding(1)(root);
+    const treemapRoot = d3.treemap().size([width, height])
+      .paddingTop(28)
+      .paddingRight(7)
+      .paddingInner(3)(root);
 
     // create 'g' element nodes based on data
     const nodes = svg
@@ -47,15 +51,13 @@ export default function TreeMap({ data, keyValue, width, height }) {
       .attr('class', (d) => d.data.name)
       .on("click", function () {
         const stockName = this.className.baseVal;
-        console.log(stockName)
-        navigate(`/stock/${stockName}`);
+        navigate(`/${stockName}`);
       });
 
     const fontSize = 12;
 
     // add text to rects
-    nodes
-      .append('text')
+    nodes.append('text')
       .text((d) => `${d.data.name}`)
       .attr('data-width', (d) => d.x1 - d.x0)
       .attr('font-size', `${fontSize + 4}px`)
@@ -65,8 +67,7 @@ export default function TreeMap({ data, keyValue, width, height }) {
       .style('text-anchor', 'middle')
       .style('fill', 'white')
 
-    nodes
-      .append('text')
+    nodes.append('text')
       // .text((d) => `${d.data[keyValue].toLocaleString('en-US', {
       //   style: 'currency',
       //   currency: 'USD',
@@ -117,34 +118,25 @@ export default function TreeMap({ data, keyValue, width, height }) {
       });
     }
 
-    // // pull out hierarchy categories
-    // let categories = root.leaves().map((node) => node.data.category);
-    // categories = categories.filter(
-    //   (category, index, self) => self.indexOf(category) === index,
-    // );
+    // Add title for the 3 groups
+    svg.selectAll("titles")
+      .data(root.descendants().filter(function (d) { return d.depth == 1 }))
+      .enter()
+      .append("text")
+      .attr("x", function (d) { return d.x0 })
+      .attr("y", function (d) { return d.y0 + 21 })
+      .text(function (d) { return d.data.name })
+      .attr("font-size", "19px")
+    // .attr("fill", function (d) { return color(d.data.name) })
 
-    // legendContainer.attr('width', width).attr('height', height / 4);
 
-    // // create 'g' elements based on categories
-    // const legend = legendContainer.selectAll('g').data(categories).join('g');
-
-    // // create 'rects' for each category
-    // legend
-    //   .append('rect')
-    //   .attr('width', fontSize)
-    //   .attr('height', fontSize)
-    //   .attr('x', fontSize)
-    //   .attr('y', (_, i) => fontSize * 2 * i)
-    //   .attr('fill', (d) => colorScale(d));
-
-    // // add text to each category key
-    // legend
-    //   .append('text')
-    //   .attr('transform', `translate(0, ${fontSize})`)
-    //   .attr('x', fontSize * 3)
-    //   .attr('y', (_, i) => fontSize * 2 * i)
-    //   .style('font-size', fontSize)
-    //   .text((d) => d);
+    // Add title for the 3 groups
+    svg.append("text")
+      .attr("x", (width / 2) - 100)
+      .attr("y", 14)    // +20 to adjust position (lower)
+      .text("Stock Tree Graph")
+      .attr("font-size", "19px")
+      .attr("fill", "grey")
   }
 
   useEffect(() => {
