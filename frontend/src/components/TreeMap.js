@@ -63,9 +63,14 @@ export default function TreeMap({ data, keyValue, width, height }) {
       .attr('font-size', `${fontSize + 4}px`)
       .attr('x', (d) => (d.x1 - d.x0) / 2)
       .attr('y', (d) => ((d.y1 - d.y0) / 2) - 7)
+      .attr('class', (d) => d.data.ticker)
       .call(wrapText)
       .style('text-anchor', 'middle')
       .style('fill', 'white')
+      .on("click", function () {
+        const stockName = this.className.baseVal;
+        navigate(`/${stockName}`);
+      })
 
     nodes.append('text')
       // .text((d) => `${d.data[keyValue].toLocaleString('en-US', {
@@ -77,9 +82,14 @@ export default function TreeMap({ data, keyValue, width, height }) {
       .attr('font-size', `${fontSize}px`)
       .attr('x', (d) => (d.x1 - d.x0) / 2)
       .attr('y', (d) => ((d.y1 - d.y0) / 2) + 7)
+      .attr('class', (d) => d.data.ticker)
       .call(wrapText)
       .style('text-anchor', 'middle')
       .style('fill', 'white')
+      .on("click", function () {
+        const stockName = this.className.baseVal;
+        navigate(`/${stockName}`);
+      });
 
     function wrapText(selection) {
       selection.each(function () {

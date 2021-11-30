@@ -22,8 +22,38 @@ const indicatorOptions = [
   },
   {
     id: '1',
-    display: 'P/E',
-    value: 'p/e'
+    display: '52 Week Change',
+    value: '52_week_change'
+  },
+  {
+    id: '2',
+    display: '52 Week High',
+    value: '52_week_high'
+  },
+  {
+    id: '3',
+    display: '52 Week Low',
+    value: '52_week_low'
+  },
+  {
+    id: '4',
+    display: 'EPS',
+    value: 'eps'
+  },
+  {
+    id: '5',
+    display: 'PE Ratio',
+    value: 'pe_ratio'
+  },
+  {
+    id: '6',
+    display: 'Market Cap',
+    value: 'market_cap'
+  },
+  {
+    id: '7',
+    display: 'Volume',
+    value: 'volume'
   }
 ];
 
