@@ -48,7 +48,7 @@ export default function TreeMap({ data, keyValue, width, height }) {
       .attr('width', (d) => d.x1 - d.x0)
       .attr('height', (d) => d.y1 - d.y0)
       .attr('fill', (d) => colorScale(d.data.move))
-      .attr('class', (d) => d.data.name)
+      .attr('class', (d) => d.data.ticker)
       .on("click", function () {
         const stockName = this.className.baseVal;
         navigate(`/${stockName}`);
@@ -58,7 +58,7 @@ export default function TreeMap({ data, keyValue, width, height }) {
 
     // add text to rects
     nodes.append('text')
-      .text((d) => `${d.data.name}`)
+      .text((d) => `${d.data.ticker}`)
       .attr('data-width', (d) => d.x1 - d.x0)
       .attr('font-size', `${fontSize + 4}px`)
       .attr('x', (d) => (d.x1 - d.x0) / 2)
@@ -127,6 +127,7 @@ export default function TreeMap({ data, keyValue, width, height }) {
       .attr("y", function (d) { return d.y0 + 21 })
       .text(function (d) { return d.data.name })
       .attr("font-size", "19px")
+      .attr("fill", "grey")
     // .attr("fill", function (d) { return color(d.data.name) })
 
 

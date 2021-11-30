@@ -49,7 +49,7 @@ export default function LineChart({ data, n_width, n_height }) {
         svg.append("text")
             .attr("x", (width / 2))
             .attr("y", 14)    // +20 to adjust position (lower)
-            .text("Stock Name")
+            .text(data[0].ticker)
             .attr("font-size", "19px")
             .attr("fill", "grey")
     }
