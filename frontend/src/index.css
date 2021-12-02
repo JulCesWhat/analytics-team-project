@@ -17,6 +17,14 @@ code {
   justify-content: center;
 }
 
+.line-chart-container {
+  margin-top: 60px;
+}
+
+.table-container {
+  margin-right: 50px;
+}
+
 .select-container {
   text-align: left;
   margin-top: 150px;
@@ -60,4 +68,38 @@ tr {
 
 th, td {
   border: 1px solid grey;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.focus circle {
+  fill: steelblue;
+}
+
+.tooltip {
+  width: 94px;
+  padding: 4px 10px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  position: absolute;
+  background-color: white;
+  font-size: 14px;
+  pointer-events: none;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -ms-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+.tooltip div {
+  margin: 3px 0;
+}
+
+.tooltip-date, .tooltip-likes {
+  font-weight: bold;
 }
