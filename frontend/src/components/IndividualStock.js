@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import LineChart from './LineChart'
 import { useParams } from 'react-router-dom';
 
-const URL = 'https://zhji3ynjle.execute-api.us-east-2.amazonaws.com/Stage/history?ticker='
+const URL = 'https://zhji3ynjle.execute-api.us-east-2.amazonaws.com/dev/history?ticker='
 
 export default function IndividualStock({ stocks }) {
     const [loading, setLoading] = useState(true);
@@ -40,7 +40,7 @@ export default function IndividualStock({ stocks }) {
         <>
             {
                 loading ? <div className='loading-container'>Loading...</div> : (
-                    <div className="App">
+                    <div className="App line-chart-container">
                         {stock && <div className='table-container'>
                             <table>
                                 <thead>

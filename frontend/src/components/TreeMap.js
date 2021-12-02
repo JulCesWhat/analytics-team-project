@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
 import { useNavigate } from "react-router-dom";
 
-export default function TreeMap({ data, keyValue, width, height }) {
+export default function TreeMap({ data, indicatorOption, colorOption, width, height }) {
   const svgRef = useRef(null);
   const navigate = useNavigate();
   // const legendRef = useRef(null);
@@ -20,8 +20,8 @@ export default function TreeMap({ data, keyValue, width, height }) {
     // create root node
     const root = d3
       .hierarchy(data)
-      .sum((d) => d[keyValue])
-      .sort((a, b) => b[keyValue] - a[keyValue]);
+      .sum((d) => d[indicatorOption])
+      .sort((a, b) => b[indicatorOption] - a[indicatorOption]);
 
     // create treemap layout
     const treemapRoot = d3.treemap().size([width, height])
@@ -51,7 +51,7 @@ export default function TreeMap({ data, keyValue, width, height }) {
       .attr('class', (d) => d.data.ticker)
       .on("click", function () {
         const stockName = this.className.baseVal;
-        navigate(`/${stockName}`);
+        navigate(`/stock/${stockName}`);
       });
 
     const fontSize = 12;
@@ -69,7 +69,7 @@ export default function TreeMap({ data, keyValue, width, height }) {
       .style('fill', 'white')
       .on("click", function () {
         const stockName = this.className.baseVal;
-        navigate(`/${stockName}`);
+        navigate(`/stock/${stockName}`);
       })
 
     nodes.append('text')
@@ -77,7 +77,7 @@ export default function TreeMap({ data, keyValue, width, height }) {
       //   style: 'currency',
       //   currency: 'USD',
       // })}`)
-      .text((d) => `${d.data[keyValue]}`)
+      .text((d) => `${d.data[indicatorOption]}`)
       .attr('data-width', (d) => d.x1 - d.x0)
       .attr('font-size', `${fontSize}px`)
       .attr('x', (d) => (d.x1 - d.x0) / 2)
@@ -88,7 +88,7 @@ export default function TreeMap({ data, keyValue, width, height }) {
       .style('fill', 'white')
       .on("click", function () {
         const stockName = this.className.baseVal;
-        navigate(`/${stockName}`);
+        navigate(`/stock/${stockName}`);
       });
 
     function wrapText(selection) {
@@ -152,7 +152,7 @@ export default function TreeMap({ data, keyValue, width, height }) {
 
   useEffect(() => {
     renderTreemap();
-  }, [data, keyValue]);
+  }, [data, indicatorOption, colorOption]);
 
   return (
     <div>
