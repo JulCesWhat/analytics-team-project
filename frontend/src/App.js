@@ -117,7 +117,7 @@ function App() {
 
 		return () => {
 		}
-	}, [indicator])
+	}, [])
 
 
 	const onSetIndustry = (newIndustry) => {
