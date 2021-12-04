@@ -34,12 +34,43 @@ code {
 .ui-select {
   display: flex;
   flex-direction: column;
-  margin: 10px 0;
+  margin: 20px 0;
+  position: relative;
 }
 
 .ui-select label {
   font-weight: 600;
   margin-bottom: 5px;
+}
+
+.ui-select span {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.ui-select i {
+  padding: 0 10px;
+}
+
+.dropdown-tooltip {
+  position: absolute;
+  display: none;
+  width: 400px;
+  height: auto;
+  background: none repeat scroll 0 0 white;
+  border: 0 none;
+  border-radius: 8px 8px 8px 8px;
+  box-shadow: -3px 3px 15px #888888;
+  color: black;
+  font: 12px sans-serif;
+  padding: 5px;
+  text-align: center;
+  top: -25px;
+}
+
+.dropdown-tooltip.show-tooltip {
+  display: inline;
 }
 
 header {
