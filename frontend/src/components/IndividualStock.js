@@ -32,7 +32,7 @@ export default function IndividualStock({ stocks }) {
 
         return () => {
         }
-    }, [])
+    }, [id])
 
     const stock = stocks.find((s) => (s.ticker === id))
 
@@ -42,6 +42,7 @@ export default function IndividualStock({ stocks }) {
                 loading ? <div className='loading-container'>Loading...</div> : (
                     <div className="App line-chart-container">
                         {stock && <div className='table-container'>
+                            <h3>{stock?.name}</h3>
                             <table>
                                 <thead>
                                     <tr>
@@ -56,7 +57,7 @@ export default function IndividualStock({ stocks }) {
                                     </tr>
                                     <tr>
                                         <td>Sentiment Score</td>
-                                        <td>{stock?.score}</td>
+                                        <td>{stock?.sentiment_score}</td>
                                     </tr>
                                     <tr>
                                         <td>PE Ratio</td>
@@ -65,14 +66,6 @@ export default function IndividualStock({ stocks }) {
                                     <tr>
                                         <td>52 Week Change</td>
                                         <td>{stock['52_week_change']}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>52 Week High</td>
-                                        <td>{stock['52_week_high']}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>52 Week Low</td>
-                                        <td>{stock['52_week_low']}</td>
                                     </tr>
                                     <tr>
                                         <td>Market Cap</td>
@@ -86,6 +79,7 @@ export default function IndividualStock({ stocks }) {
                             </table>
                         </div>}
                         <div className='linechart-container'>
+                            
                             <LineChart data={data} n_height="600" n_width="1000" />
                         </div>
                     </div>
@@ -95,17 +89,19 @@ export default function IndividualStock({ stocks }) {
     );
 }
 
-// 52_week_change: "23.21"
-// 52_week_high: 27.97
-// 52_week_low: 17.15
-// close: 21.82
-// date: "2021-11-29"
-// eps: 0.83
-// load_date: "2021-11-29"
-// market_cap: "13600000000"
-// open: 21.45
-// pe_ratio: 26.32
-// score: 0.038909
+// 52_week_change: 6.95
+// 52_week_change_score: -0.9942393149
+// close: 3389.79
+// date: "2021-12-01"
+// eps: 51.14
+// eps_score: 3.317790296
+// market_cap: "1728250000000"
+// name: "Amazon.com Inc. "
+// open: 3437.36
+// pe_ratio: 67.34
+// pe_ratio_score: -3.4842249874
 // sector: "Consumer Services"
-// ticker: "NWSA"
-// volume: 5126672
+// sentiment_flag: 1
+// sentiment_score: 0.152105
+// ticker: "AMZN"
+// volume: 3955629

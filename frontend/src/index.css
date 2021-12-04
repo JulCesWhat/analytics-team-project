@@ -28,7 +28,7 @@ code {
 .select-container {
   text-align: left;
   margin-top: 150px;
-  margin-right: 20px;
+  margin-right: 5px;
 }
 
 .ui-select {
@@ -44,7 +44,7 @@ code {
 
 header {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
 
   box-shadow: 0px 0px 16px grey;
@@ -55,6 +55,11 @@ header H1 {
   margin-left: 10px;
   margin-top: 7px;
   margin-bottom: 7px;
+  cursor: pointer;
+}
+
+header img {
+  width: 148px;
   cursor: pointer;
 }
 
@@ -80,20 +85,18 @@ th, td {
 }
 
 .tooltip {
-  width: 94px;
-  padding: 4px 10px;
-  border: 1px solid #aaa;
-  border-radius: 4px;
-  box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
   position: absolute;
-  background-color: white;
-  font-size: 14px;
-  pointer-events: none;
-  -webkit-transition: all 0.25s;
-  -moz-transition: all 0.25s;
-  -ms-transition: all 0.25s;
-  -o-transition: all 0.25s;
-  transition: all 0.25s;
+  display: none;
+  width: auto;
+  height: auto;
+  background: none repeat scroll 0 0 white;
+  border: 0 none;
+  border-radius: 8px 8px 8px 8px;
+  box-shadow: -3px 3px 15px #888888;
+  color: black;
+  font: 12px sans-serif;
+  padding: 5px;
+  text-align: center;
 }
 
 .tooltip div {
