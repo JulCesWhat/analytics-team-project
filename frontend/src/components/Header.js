@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
+import logo from '../GeorgiaTech_RGB.png';
 
 export default function Header() {
 
@@ -11,7 +12,8 @@ export default function Header() {
 
     return (
         <header>
-            <h1 onClick={handleClick}>Home</h1>
+            <img onClick={handleClick} src={logo} alt='logo' />
+            <h1 onClick={handleClick}>FinApp</h1>
         </header>
     );
 }
