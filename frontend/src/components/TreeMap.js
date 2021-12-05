@@ -72,8 +72,6 @@ export default function TreeMap({ data, industryOptions, industryOption, indicat
 				const max = Math.max(...indicatorArr) > 0 ? Math.max(...indicatorArr) : 0
 				const mid = 0
 
-				// console.log(`${min} ${mid} ${max}`)
-
 				industryColorObject[d.name] = d3.scaleLinear()
 					.domain([min, mid, max])
 					.range(["#990000", "#C0C0C0", "#009900"])
@@ -90,8 +88,6 @@ export default function TreeMap({ data, industryOptions, industryOption, indicat
 			const min = Math.min(...indicatorArr) < 0 ? Math.min(...indicatorArr) : 0
 			const max = Math.max(...indicatorArr) > 0 ? Math.max(...indicatorArr) : 0
 			const mid = 0
-
-			// console.log(`${min} ${mid} ${max}`)
 
 			industryColorObject[data.name] = d3.scaleLinear()
 				.domain([min, mid, max])
