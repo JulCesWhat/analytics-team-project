@@ -14,7 +14,6 @@ export default function UiSelect({ label, selectedValue, setSelectedValue, selec
     const [info, setInfo] = useState('')
 
     const handleOnchange = (event) => {
-        // console.log(event.target.value)
         setSelectedValue(event.target.value)
     };
 
@@ -22,11 +21,10 @@ export default function UiSelect({ label, selectedValue, setSelectedValue, selec
         const optionKey = Object.keys(info_content).find((info) => (info === selectedValue)) ?? ''
         if (optionKey.length) {
             setInfo(info_content[optionKey])
-            console.log(info)
         }
         return () => {
         }
-    }, [selectedValue, info_content])
+    }, [selectedValue])
 
     return (
         <div className='ui-select'>

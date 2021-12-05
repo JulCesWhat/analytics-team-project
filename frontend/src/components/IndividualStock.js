@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import LineChart from './LineChart'
 import { useParams } from 'react-router-dom';
 
-const URL = 'https://zhji3ynjle.execute-api.us-east-2.amazonaws.com/dev/history?ticker='
+const URL = `${process.env.REACT_APP_API_BASE_URL}/dev/history?ticker=`
 
 export default function IndividualStock({ stocks }) {
     const [loading, setLoading] = useState(true);
@@ -18,7 +18,6 @@ export default function IndividualStock({ stocks }) {
                 const res = await fetch(URL + id);
                 if (res.ok) {
                     const json = await res.json();
-                    // console.log(json)
                     setData(json);
                 } else {
                     throw res;

@@ -13,7 +13,7 @@ import {
 } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 
-const URL = 'https://zhji3ynjle.execute-api.us-east-2.amazonaws.com/dev/current'
+const URL = `${process.env.REACT_APP_API_BASE_URL}/dev/current`
 
 const indicatorOptions = [
 	{

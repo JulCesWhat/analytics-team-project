@@ -9,8 +9,6 @@ function GraphChart({ data }) {
   });
   const stockDetails = stockGroup.children.find((a) => (a.name === id));
 
-  // console.log(stockDetails)
-
   return (
     <div>
       <div>{stockDetails.name}</div>
